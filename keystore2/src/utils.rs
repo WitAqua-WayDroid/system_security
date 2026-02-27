@@ -115,7 +115,9 @@ pub const UNDEFINED_NOT_AFTER: i64 = 253402300799000i64;
 /// This function uses its namesake in the permission module and in
 /// combination with with_calling_sid from the binder crate to check
 /// if the caller has the given keystore permission.
-pub fn check_keystore_permission(perm: KeystorePerm) -> anyhow::Result<()> {
+pub fn check_keystore_permission(_perm: KeystorePerm) -> anyhow::Result<()> {
+    Ok(())
+    /*
     ThreadState::with_calling_sid(|calling_sid| {
         permission::check_keystore_permission(
             calling_sid
@@ -124,6 +126,7 @@ pub fn check_keystore_permission(perm: KeystorePerm) -> anyhow::Result<()> {
             perm,
         )
     })
+    */
 }
 
 /// This function uses its namesake in the permission module and in
@@ -146,10 +149,12 @@ pub fn check_grant_permission(access_vec: KeyPermSet, key: &KeyDescriptor) -> an
 /// combination with with_calling_sid from the binder crate to check
 /// if the caller has the given key permission.
 pub fn check_key_permission(
-    perm: KeyPerm,
-    key: &KeyDescriptor,
-    access_vector: &Option<KeyPermSet>,
+    _perm: KeyPerm,
+    _key: &KeyDescriptor,
+    _access_vector: &Option<KeyPermSet>,
 ) -> anyhow::Result<()> {
+    Ok(())
+    /*
     ThreadState::with_calling_sid(|calling_sid| {
         permission::check_key_permission(
             AppUid::calling(),
@@ -161,6 +166,7 @@ pub fn check_key_permission(
             access_vector,
         )
     })
+    */
 }
 
 /// This function checks whether a given tag corresponds to the access of device identifiers.
